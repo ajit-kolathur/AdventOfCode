@@ -1,0 +1,9 @@
+[package]
+name = "AdventOfCode"
+version = "0.1.0"
+authors = ["Ajit Kolathur <aj.ajit@gmail.com>"]
+edition = "2018"
+
+[dependencies]
+log = "0.4"
+env_logger = "0.8.2"

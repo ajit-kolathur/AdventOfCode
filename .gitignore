@@ -12,3 +12,8 @@ Cargo.lock
 # Advent of code directory setup
 # Ignore any binary files, convention used: main.rs -> main
 **/main
+
+
+# Added by cargo
+
+/target
