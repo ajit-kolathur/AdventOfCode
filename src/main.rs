@@ -2,7 +2,6 @@ use std::env;
 
 mod days;
 mod common;
-#[macro_use]
 extern crate log;
 
 fn main() {
@@ -11,6 +10,7 @@ fn main() {
         log::info!("Running -> {}", day);
         match day.as_ref() {
             "day1" => days::day1::run("./inputs/day1"),
+            "day2" => days::day2::run("./inputs/day2"),
             _ => println!("Day not built so far!"),
         }
     }
