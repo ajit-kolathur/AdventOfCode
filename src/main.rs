@@ -11,6 +11,7 @@ fn main() {
         match day.as_ref() {
             "day1" => days::day1::run("./inputs/day1"),
             "day2" => days::day2::run("./inputs/day2"),
+            "day3" => days::day3::run("./inputs/day3"),
             _ => println!("Day not built so far!"),
         }
     }
