@@ -13,6 +13,7 @@ fn main() {
             "day2" => days::day2::run("./inputs/day2"),
             "day3" => days::day3::run("./inputs/day3"),
             "day4" => days::day4::run("./inputs/day4"),
+            "day5" => days::day5::run("./inputs/day5"),
             _ => println!("Day not built so far!"),
         }
     }
