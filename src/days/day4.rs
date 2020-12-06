@@ -5,17 +5,6 @@ use regex::Regex;
 use crate::common::io;
 use crate::common::convertor::chunk_parts as chunk_parts;
 
-fn check_all_rules_are_obeyed(chunked_lines: &Vec<String>, regex_set: &RegexSet) -> i32 {
-    let mut count = 0;
-    for line in chunked_lines {
-        let matches: Vec<_> = regex_set.matches(line).into_iter().collect();
-        if matches.len() == regex_set.len() {
-            count += 1;
-        }
-    }
-    return count;
-}
-
 fn part1(lines: &Vec<String>) -> i32 {
     log::info!("Running Part 1");
     let regex_set = RegexSet::new(&[
