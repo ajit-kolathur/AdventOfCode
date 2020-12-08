@@ -164,8 +164,6 @@ mod tests {
             "dark violet bags contain no other bags.",
         ].iter().map(|x| x.to_string()).collect();
         let tree = build_tree_from_rules(&lines);
-
-        env_logger::init();
         assert_eq!(126, part2(&tree));
     }
 }
