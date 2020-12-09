@@ -126,7 +126,6 @@ mod tests {
 
     #[test]
     fn part2_test() {
-        env_logger::init();
         let instructions: Vec<String> = vec![
             "nop +0",
             "acc +1",

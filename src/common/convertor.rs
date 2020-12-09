@@ -6,6 +6,10 @@ pub fn vector_str_to_int(vector: Vec<String>) -> Vec<i16> {
     return vector.into_iter().map(|x| x.parse::<i16>().unwrap()).collect();
 }
 
+pub fn vector_str_to_int64(vector: Vec<String>) -> Vec<i64> {
+    return vector.into_iter().map(|x| x.parse::<i64>().unwrap()).collect();
+}
+
 pub fn chunk_parts(lines: &Vec<String>) -> Vec<String> {
     let mut chunks: Vec<String> = Vec::new();
     let mut chunk = Vec::<String>::new();
