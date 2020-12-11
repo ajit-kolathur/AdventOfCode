@@ -1,21 +1,21 @@
 use std::path::Path as Path;
+use std::iter::FromIterator;
+use std::collections::HashSet;
 
 use crate::common::io;
 use crate::common::convertor;
-use crate::common::search;
 
 fn part1(numbers: &Vec<i16>) -> f32 {
     log::info!("Running Part 1");
-    
+    let lookup: HashSet<i16> = HashSet::from_iter(numbers.iter().cloned());
+
     for number in numbers.iter() {
         let find = 2020 - number;
         log::debug!("Processing {}, looking for {}", number, find);
 
-        let index = search::binary_search(&numbers, find);
-        if  index >= 0 {
-            let pair = numbers[index as usize];
-            log::info!("Found a pair {} and {}", *number, pair);
-            let result = (*number as f32) * (pair as f32);
+        if lookup.contains(&find) {
+            log::info!("Found {}", find);
+            let result: f32 = *number as f32 * find as f32;
             log::info!("Multiplication result is {}", result);
             return result;
         }
@@ -26,6 +26,7 @@ fn part1(numbers: &Vec<i16>) -> f32 {
 
 fn part2(numbers: &Vec<i16>) -> f32 {
     log::info!("Running Part 2");
+    let lookup: HashSet<i16> = HashSet::from_iter(numbers.iter().cloned());
     let n = numbers.len();
 
     for i in 0..n {
@@ -38,11 +39,9 @@ fn part2(numbers: &Vec<i16>) -> f32 {
             let find = 2020 - numbers[i] - numbers[j];
             log::debug!("Processing {} {}, looking for {}", numbers[i], numbers[j], find);
 
-            let index = search::binary_search(&numbers, find);
-            if  index >= 0 {
-                let trio = numbers[index as usize];
-                log::info!("Found a trio {}, {} and {}", numbers[i], numbers[j], trio);
-                let result = (numbers[i] as f32) * (numbers[j] as f32) * (trio as f32);
+            if lookup.contains(&find) {
+                log::info!("Found a trio {}, {} and {}", numbers[i], numbers[j], find);
+                let result = (numbers[i] as f32) * (numbers[j] as f32) * (find as f32);
                 log::info!("Multiplication result is {}", result);
                 return result;
             }
