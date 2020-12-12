@@ -52,6 +52,8 @@ fn look_for_shiny_gold(tree: &HashMap<String, HashMap<String, i32>>, subtree: &H
     return total;
 }
 
+// For each bag in the input set, traverse downward in a breadth first manner
+// till you find a leaf of gold back, if you found a gold bag count this bag
 fn part1(tree: &HashMap<String, HashMap<String, i32>>) -> i32 {
     log::info!("Running Part 1");
     let mut count = 0;
@@ -86,6 +88,8 @@ fn part1(tree: &HashMap<String, HashMap<String, i32>>) -> i32 {
     return count;
 }
 
+// Proceed in a depth first manner to find the cost of each bag,
+// the cost is the count of the number of bags that it contains within it recursively
 fn part2(tree: &HashMap<String, HashMap<String, i32>>) -> i32 {
     log::info!("Running Part 2");
     let color = "shiny gold";

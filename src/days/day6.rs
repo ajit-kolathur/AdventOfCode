@@ -4,6 +4,7 @@ use std::collections::HashSet;
 use crate::common::io;
 use crate::common::convertor;
 
+// Chunk replies into group, per group get individual replies, union and sum union sizes
 fn part1(lines: &Vec<String>) -> i32 {
     log::info!("Running Part 1");
     let mut count = 0;
@@ -23,6 +24,7 @@ fn part1(lines: &Vec<String>) -> i32 {
     return count as i32;
 }
 
+// Chunk replies into group, per group find number of common respones
 fn part2(lines: &Vec<String>) -> i32 {
     log::info!("Running Part 2");
     let mut count = 0;

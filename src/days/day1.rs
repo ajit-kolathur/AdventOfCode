@@ -5,6 +5,7 @@ use std::collections::HashSet;
 use crate::common::io;
 use crate::common::convertor;
 
+// Pick a numeber and binary search for corresponding pair for 2020 - number
 fn part1(numbers: &Vec<i16>) -> f32 {
     log::info!("Running Part 1");
     let lookup: HashSet<i16> = HashSet::from_iter(numbers.iter().cloned());
@@ -24,6 +25,7 @@ fn part1(numbers: &Vec<i16>) -> f32 {
     return -1.0;
 }
 
+// Pick a pair of numbers and try to find a third such that they sum up to 2020
 fn part2(numbers: &Vec<i16>) -> f32 {
     log::info!("Running Part 2");
     let lookup: HashSet<i16> = HashSet::from_iter(numbers.iter().cloned());
@@ -31,11 +33,6 @@ fn part2(numbers: &Vec<i16>) -> f32 {
 
     for i in 0..n {
         for j in i+1..n {
-            
-            if numbers[i] + numbers[j] >= 2020 {
-                continue;
-            }
-
             let find = 2020 - numbers[i] - numbers[j];
             log::debug!("Processing {} {}, looking for {}", numbers[i], numbers[j], find);
 
@@ -52,14 +49,8 @@ fn part2(numbers: &Vec<i16>) -> f32 {
 }
 
 pub fn run(filename: impl AsRef<Path>) {
-    // Sorted number list probably makes it easier find a pair
-    let mut numbers: Vec<i16> = convertor::vector_str_to_int(io::lines_from_file(filename));
-    numbers.sort();
-
-    // Pick a numeber and binary search for corresponding pair for 2020 - number
+    let numbers: Vec<i16> = convertor::vector_str_to_int(io::lines_from_file(filename));
     part1(&numbers);
-
-    // Pick a pair of numbers and try to find a third such that they sum up to 2020
     part2(&numbers);
 }
 
@@ -69,15 +60,13 @@ mod tests {
 
     #[test]
     fn part1_test() {
-        let mut numbers = vec![1721, 979, 366, 299, 675, 1456];
-        numbers.sort();
+        let numbers = vec![1721, 979, 366, 299, 675, 1456];
         assert_eq!(514579 as f32, part1(&numbers));
     }
 
     #[test]
     fn part2_test() {
-        let mut numbers = vec![1721, 979, 366, 299, 675, 1456];
-        numbers.sort();
+        let numbers = vec![1721, 979, 366, 299, 675, 1456];
         assert_eq!(241861950 as f32, part2(&numbers));
     }
 }

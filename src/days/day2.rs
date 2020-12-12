@@ -10,6 +10,7 @@ struct PasswordRule {
 
 type PasswordEntry = (String, PasswordRule);
 
+// Parse a line to extract PasswordRule or fail
 fn parse_rule_string(rule_string: &str) -> Result<PasswordRule, &'static str> {
     let tokens: Vec<&str> = rule_string.split_whitespace().collect();
     let range: Vec<&str> = tokens[0].trim().split('-').collect();
@@ -20,6 +21,7 @@ fn parse_rule_string(rule_string: &str) -> Result<PasswordRule, &'static str> {
     return Ok(PasswordRule {min: min, max: max, character: character});
 }
 
+// Generate PasswordEntry for each line
 fn parse_file(lines: &Vec<String>) -> Vec<PasswordEntry> {
     let mut entries: Vec<PasswordEntry> = Vec::new();
     
@@ -38,9 +40,11 @@ fn parse_file(lines: &Vec<String>) -> Vec<PasswordEntry> {
     return entries;
 }
 
+// Check that the count of given character is greater than equal to min value
+// Check that the count of given chatacter is less than equal to max value
 fn check_type1_validity(entry: &PasswordEntry) -> bool{
-    let vector: Vec<char> = entry.0.chars().filter(|x| *x == entry.1.character).collect();
-    let count = vector.len() as i8;
+    let occurences: Vec<char> = entry.0.chars().filter(|x| *x == entry.1.character).collect();
+    let count = occurences.len() as i8;
     log::debug!(
         "Checking rule for {}, looking for character {} found count {}, expected min {}, max {}",
         entry.0,
@@ -51,6 +55,7 @@ fn check_type1_validity(entry: &PasswordEntry) -> bool{
     return count >= entry.1.min && count <= entry.1.max;
 }
 
+// Check that the character at nth index obeys a rule, and only 1 of two rules are valid
 fn check_type2_validity(entry: &PasswordEntry) -> bool{
     let mut count = 0;
     if entry.0.chars().nth((entry.1.min - 1) as usize).unwrap() == entry.1.character {

@@ -5,6 +5,7 @@ use regex::Regex;
 use crate::common::io;
 use crate::common::convertor::chunk_parts as chunk_parts;
 
+// Simple prefix regex
 fn part1(lines: &Vec<String>) -> i32 {
     log::info!("Running Part 1");
     let regex_set = RegexSet::new(&[
@@ -98,6 +99,7 @@ fn verify_pid_regex(regex: &Regex, line: &String) -> bool {
     return false;
 }
 
+// Check for regex match and extract value to check validity rule
 fn part2(lines: &Vec<String>) -> i32 {
     log::info!("Running Part 2");
     let byr = Regex::new(r"byr:(\d{4})").unwrap();

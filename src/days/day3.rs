@@ -2,6 +2,7 @@ use std::path::Path as Path;
 
 use crate::common::io;
 
+// Simple matrix traversal downward, when lateral exceeds, wrap around with counter for #
 fn traverse_matrix(lines: &Vec<String>, x_move: i8, y_move: i8) -> i32 {
     let mut x: i32 = 0;
     let mut y: i32 = 0;
@@ -32,7 +33,7 @@ fn part1(matrix: &Vec<String>) -> i32 {
 }
 
 fn part2(matrix: &Vec<String>) -> i32 {
-    log::info!("Running Part 1");
+    log::info!("Running Part 2");
     let mut result = 1;
     result *= traverse_matrix(matrix, 1, 1);
     result *= traverse_matrix(matrix, 3, 1);

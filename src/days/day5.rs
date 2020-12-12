@@ -38,20 +38,24 @@ fn generate_seat_id(guid: &String) -> i32 {
     return row * 8 + seat;
 }
 
+// Get all seat numbers and find the max
 fn part1(lines: &Vec<String>) {
-    let mut max = -1;
+    log::info!("Running Part 1");
+    let mut seats: Vec<i32> = Vec::new();
 
     for line in lines {
-        let number = generate_seat_id(&line);
-        if number > max {
-            max = number;
-        }
+        seats.push(generate_seat_id(&line));
     }
+
+    seats.sort();
+    let max = seats.last().unwrap();
 
     log::info!("The max seat number seen is {}", max);
 }
 
+// Get all seat numbers, sort them and find the one which is missing when traversing asc order
 fn part2(lines: &Vec<String>) {
+    log::info!("Running Part 2");
     let mut seats: Vec<i32> = Vec::new();
 
     for line in lines {
