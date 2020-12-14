@@ -108,7 +108,6 @@ mod tests {
 
     #[test]
     fn part2_test() {
-        env_logger::init();
         let busses: Vec<&str> = vec!["7","13","x","x","59","x","31","19"];
         assert_eq!(1068781, part2(&busses));
     }

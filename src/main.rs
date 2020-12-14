@@ -21,6 +21,8 @@ fn main() {
             "day10" => days::day10::run("./inputs/day10"),
             "day11" => days::day11::run("./inputs/day11"),
             "day12" => days::day12::run("./inputs/day12"),
+            "day13" => days::day13::run("./inputs/day13"),
+            "day14" => days::day14::run("./inputs/day14"),
             _ => println!("Day not built so far!"),
         }
     }

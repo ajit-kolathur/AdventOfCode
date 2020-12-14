@@ -7,7 +7,7 @@ use crate::common::io;
 fn part1(adapters: &Vec<i16>) -> i32 {
     log::info!("Running Part 1");
 
-    let mut countDict: HashMap<i16, i16> = HashMap::new();
+    let mut count_dict: HashMap<i16, i16> = HashMap::new();
     let mut ordered = adapters.clone();
     ordered.sort();
 
@@ -15,14 +15,14 @@ fn part1(adapters: &Vec<i16>) -> i32 {
 
     for i in 0..ordered.len()-1 {
         let diff = ordered[i+1] - ordered[i];
-        if !countDict.contains_key(&(diff)) {
-            countDict.insert(diff, 0);
+        if !count_dict.contains_key(&(diff)) {
+            count_dict.insert(diff, 0);
         }
-        *countDict.get_mut(&diff).unwrap() += 1;
+        *count_dict.get_mut(&diff).unwrap() += 1;
     }
 
-    log::info!("Found one diff cases to be {} and three diff to be {}", countDict[&1] + 1, countDict[&3]+1);
-    return (countDict[&1] as i32 + 1) * (countDict[&3] as i32 + 1);
+    log::info!("Found one diff cases to be {} and three diff to be {}", count_dict[&1] + 1, count_dict[&3]+1);
+    return (count_dict[&1] as i32 + 1) * (count_dict[&3] as i32 + 1);
 }
 
 fn part2(adapters: &Vec<i16>) -> i64 {
@@ -35,7 +35,6 @@ fn part2(adapters: &Vec<i16>) -> i64 {
     // ways to get to Max + 3 is always 1
     let start: i16 = 0;
     let max: i16 = *sorted_adapters.last().unwrap();
-    let end: i16 = max + 3;
 
     table.insert(start, 1);
 
