@@ -1,4 +1,5 @@
 use std::path::Path as Path;
+use std::time::Instant;
 use num::integer;
 
 use crate::common::io;
@@ -87,10 +88,13 @@ pub fn run(filename: impl AsRef<Path>) {
                             .filter(|x| x.to_string() != "x")
                             .map(|x| x.parse::<i32>().unwrap())
                             .collect();
+    let now = Instant::now();
     part1(timestamp, &in_service_busses);
-
+    log::info!("Part 1: {}ms", now.elapsed().as_millis());
+    
     if is_set_coprime(&in_service_busses) {
         part2(&busses_list);
+        log::info!("Part 1 + 2: {}ms", now.elapsed().as_millis());
     } else {
         panic!("If the bus set is not coprime we cannot solve this, crash and burn");
     }

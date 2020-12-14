@@ -1,4 +1,5 @@
 use std::path::Path as Path;
+use std::time::Instant;
 use std::collections::HashMap;
 use std::collections::VecDeque;
 
@@ -107,9 +108,11 @@ fn part2(tree: &HashMap<String, HashMap<String, i32>>) -> i32 {
 pub fn run(filename: impl AsRef<Path>) {
     let lines = io::lines_from_file(filename);
     let tree = build_tree_from_rules(&lines);
-
+    let now = Instant::now();
     part1(&tree);
+    log::info!("Part 1: {}ms", now.elapsed().as_millis());
     part2(&tree);
+    log::info!("Part 1 + 2: {}ms", now.elapsed().as_millis());
 }
 
 #[cfg(test)]

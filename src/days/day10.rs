@@ -1,4 +1,5 @@
 use std::path::Path as Path;
+use std::time::Instant;
 use std::collections::HashMap;
 
 use crate::common::convertor;
@@ -63,8 +64,11 @@ fn part2(adapters: &Vec<i16>) -> i64 {
 
 pub fn run(filename: impl AsRef<Path>) {
     let adapters = convertor::vector_str_to_int(io::lines_from_file(filename));
+    let now = Instant::now();
     part1(&adapters);
+    log::info!("Part 1: {}ms", now.elapsed().as_millis());
     part2(&adapters);
+    log::info!("Part 1 + 2: {}ms", now.elapsed().as_millis());
 }
 
 #[cfg(test)]

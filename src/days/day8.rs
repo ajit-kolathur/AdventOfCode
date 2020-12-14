@@ -1,5 +1,6 @@
 use std::collections::HashSet;
 use std::path::Path as Path;
+use std::time::Instant;
 
 use crate::common::io;
 
@@ -77,8 +78,11 @@ fn part2(instructions: &Vec<String>) -> i32 {
 
 pub fn run(filename: impl AsRef<Path>) {
     let lines = io::lines_from_file(filename);
+    let now = Instant::now();
     part1(&lines);
+    log::info!("Part 1: {}ms", now.elapsed().as_millis());
     part2(&lines);
+    log::info!("Part 1 + 2: {}ms", now.elapsed().as_millis());
 }
 
 #[cfg(test)]
