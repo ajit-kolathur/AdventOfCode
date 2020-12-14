@@ -90,11 +90,11 @@ pub fn run(filename: impl AsRef<Path>) {
                             .collect();
     let now = Instant::now();
     part1(timestamp, &in_service_busses);
-    log::info!("Part 1: {}ms", now.elapsed().as_millis());
+    log::info!("Part 1: {}us", now.elapsed().as_micros());
     
     if is_set_coprime(&in_service_busses) {
         part2(&busses_list);
-        log::info!("Part 1 + 2: {}ms", now.elapsed().as_millis());
+        log::info!("Part 1 + 2: {}us", now.elapsed().as_micros());
     } else {
         panic!("If the bus set is not coprime we cannot solve this, crash and burn");
     }

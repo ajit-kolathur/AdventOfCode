@@ -49,7 +49,7 @@ pub fn run(filename: impl AsRef<Path>) {
     let lines = io::lines_from_file(filename);
     let now = Instant::now();
     part1(&lines);
-    log::info!("Part 1: {}ms", now.elapsed().as_millis());
+    log::info!("Part 1: {}us", now.elapsed().as_micros());
     part2(&lines);
     log::info!("Part 1 + 2: {}ms", now.elapsed().as_millis());
 }
