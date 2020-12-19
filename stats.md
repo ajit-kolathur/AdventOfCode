@@ -1,5 +1,5 @@
 # Execution Time Stats for each day
-|Day|Part1|Part 1 + 2|
+|Day|Part 1|Part 1 + 2|
 |---|-----|----------|
 |Day 1|754us|14ms|
 |Day 2|12ms|23ms|
@@ -15,3 +15,4 @@
 |Day 12|2ms|4ms|
 |Day 13|33us|449us|
 |Day 14|10ms|927ms|
+|Day 15|6ms|72777ms|
